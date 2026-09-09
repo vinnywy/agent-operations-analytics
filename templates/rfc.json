@@ -1,0 +1,14 @@
+{
+  "title": "Melhorar uma mensagem do onboarding",
+  "area": "onboarding", "impact": "low", "origin": "mixed",
+  "observation": "Descreva a dificuldade observada, sem dados privados.",
+  "expected": "Descreva o comportamento esperado.",
+  "reproduction": "Passos mínimos usando nomes fictícios.",
+  "evidence": "Resumo sanitizado da saída e versão.",
+  "mitigation": "Mudança proposta.",
+  "alternatives": "Alternativas ou motivo de não haver outra viável.",
+  "risks": "Impacto da alteração.",
+  "eval": "Caso que reproduz a dificuldade.",
+  "acceptance": "Resultado observável para considerar resolvido.",
+  "version": "0.1.0"
+}

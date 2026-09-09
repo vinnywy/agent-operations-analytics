@@ -1,0 +1,31 @@
+openapi: 3.1.0
+info: {title: Agent Operations Shared Memory Lab, version: 0.1.0, description: Experimental local API using synthetic fixture identities.}
+paths:
+  /v1/projects/{project_id}/records:
+    post:
+      parameters:
+        - {name: project_id, in: path, required: true, schema: {type: string, format: uuid}}
+        - {name: X-Principal, in: header, required: true, schema: {type: string}}
+        - {name: Idempotency-Key, in: header, required: true, schema: {type: string, minLength: 1, maxLength: 128}}
+      responses: {'201': {description: created}, '200': {description: idempotent replay}, '401': {description: unauthenticated}, '404': {description: inaccessible project}, '409': {description: idempotency conflict}, '422': {description: invalid record}}
+  /v1/projects/{project_id}/search:
+    post:
+      parameters:
+        - {name: project_id, in: path, required: true, schema: {type: string, format: uuid}}
+        - {name: X-Principal, in: header, required: true, schema: {type: string}}
+      responses: {'200': {description: scoped summaries}, '401': {description: unauthenticated}, '404': {description: inaccessible project}}
+  /v1/projects/{project_id}/records/{record_id}:
+    get:
+      parameters:
+        - {name: project_id, in: path, required: true, schema: {type: string, format: uuid}}
+        - {name: record_id, in: path, required: true, schema: {type: string, format: uuid}}
+        - {name: X-Principal, in: header, required: true, schema: {type: string}}
+      responses: {'200': {description: current revision}, '401': {description: unauthenticated}, '404': {description: inaccessible project or record}}
+  /v1/projects/{project_id}/records/{record_id}/revisions:
+    post:
+      parameters:
+        - {name: project_id, in: path, required: true, schema: {type: string, format: uuid}}
+        - {name: record_id, in: path, required: true, schema: {type: string, format: uuid}}
+        - {name: X-Principal, in: header, required: true, schema: {type: string}}
+        - {name: If-Match, in: header, required: true, schema: {type: integer, minimum: 1}}
+      responses: {'201': {description: revision created}, '401': {description: unauthenticated}, '404': {description: inaccessible project or record}, '409': {description: revision conflict}}

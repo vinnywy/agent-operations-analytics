@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object", "additionalProperties": false,
+  "required": ["schema_version", "name", "language", "depth", "tone", "documentation", "review_offers"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "name": {"type": "string", "minLength": 1, "maxLength": 100},
+    "language": {"enum": ["pt-BR", "en"]},
+    "depth": {"enum": ["concise", "balanced", "detailed"]},
+    "tone": {"enum": ["direct", "didactic", "collaborative"]},
+    "documentation": {"enum": ["workspace-default", "concise", "narrative"]},
+    "review_offers": {"enum": ["when-relevant", "on-request"]},
+    "development_style": {"enum": ["workspace-default", "python-standard", "minimal-diff"]}
+  }
+}

@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "agentops-analytics"
+version = "0.2.0"
+description = "Local-first operating controls for AI-assisted data analytics"
+requires-python = ">=3.11"
+dependencies = ["jsonschema==4.26.0"]
+
+[project.scripts]
+agentops = "agentops.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+agentops = ["resources/*.json", "resources/*.md"]

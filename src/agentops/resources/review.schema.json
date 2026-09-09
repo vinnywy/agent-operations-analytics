@@ -1,0 +1,17 @@
+{
+  "type": "object", "additionalProperties": false,
+  "required": ["verdict", "findings", "limitations"],
+  "properties": {
+    "verdict": {"enum": ["findings", "no-findings", "inconclusive"]},
+    "findings": {"type": "array", "items": {
+      "type": "object", "additionalProperties": false,
+      "required": ["location", "severity", "evidence", "recommendation"],
+      "properties": {
+        "location": {"type": "string"},
+        "severity": {"enum": ["low", "medium", "high", "critical"]},
+        "evidence": {"type": "string"}, "recommendation": {"type": "string"}
+      }
+    }},
+    "limitations": {"type": "array", "items": {"type": "string"}}
+  }
+}

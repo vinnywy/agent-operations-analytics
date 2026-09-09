@@ -1,0 +1,10 @@
+{
+  "title": "Primeira task demonstrativa",
+  "objective": "Produzir uma nota curta e verificar o ciclo operacional",
+  "scope": "Um arquivo Markdown com resultado e limitação",
+  "workflow": "documentation",
+  "criteria": ["Nota contém resultado e limitação explícitos"],
+  "checks": [],
+  "sprint": "backlog",
+  "limitations": "Verificação estrutural; conteúdo deve ser lido pelo responsável."
+}

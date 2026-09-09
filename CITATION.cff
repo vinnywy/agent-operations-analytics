@@ -1,0 +1,7 @@
+cff-version: 1.2.0
+message: "If you build on this proposal, cite the repository version and commit."
+title: "Agent Operations for Analytics"
+type: software
+version: 0.2.0
+date-released: 2026-09-09
+abstract: "A local-first workflow and experimental shared-memory laboratory for AI-assisted data analytics."

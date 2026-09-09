@@ -1,0 +1,10 @@
+status: proposed
+version: 0.1.0
+share_grant:
+  fields: [id, source_record_id, source_revision, recipient_team_id, approved_by, expires_at, status]
+  invariant: "A grant authorizes one immutable revision for one recipient team. A new revision requires a new or explicitly renewable grant."
+revocation:
+  invariant: "New reads are denied after revocation; clients may retain data already delivered."
+task_lease:
+  fields: [task_id, owner, lease_expires_at, fencing_token]
+  invariant: "A result with an older fencing token cannot replace a current owner result."

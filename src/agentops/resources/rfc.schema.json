@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object", "additionalProperties": false,
+  "required": ["title", "area", "impact", "origin", "observation", "expected", "reproduction", "evidence", "mitigation", "alternatives", "risks", "eval", "acceptance", "version"],
+  "properties": {
+    "title": {"type": "string", "minLength": 1, "maxLength": 180},
+    "area": {"enum": ["policy", "harness", "evals", "skill", "onboarding", "security", "data-workflow", "documentation"]},
+    "impact": {"enum": ["low", "medium", "high", "critical"]},
+    "origin": {"enum": ["user", "agent", "mixed"]},
+    "observation": {"type": "string", "minLength": 1, "maxLength": 3000},
+    "expected": {"type": "string", "minLength": 1, "maxLength": 3000},
+    "reproduction": {"type": "string", "minLength": 1, "maxLength": 3000},
+    "evidence": {"type": "string", "minLength": 1, "maxLength": 3000},
+    "mitigation": {"type": "string", "minLength": 1, "maxLength": 3000},
+    "alternatives": {"type": "string", "minLength": 1, "maxLength": 3000},
+    "risks": {"type": "string", "minLength": 1, "maxLength": 3000},
+    "eval": {"type": "string", "minLength": 1, "maxLength": 3000},
+    "acceptance": {"type": "string", "minLength": 1, "maxLength": 3000},
+    "version": {"type": "string", "minLength": 1, "maxLength": 100}
+  }
+}

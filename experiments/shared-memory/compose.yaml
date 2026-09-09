@@ -1,0 +1,16 @@
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: memory_lab
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres_lab_only
+    ports: ["127.0.0.1:54329:5432"]
+    volumes:
+      - ./migrations:/docker-entrypoint-initdb.d:ro
+  api:
+    build: .
+    environment:
+      DATABASE_URL: postgresql://lab_app:lab_only_change_me@db:5432/memory_lab
+    ports: ["127.0.0.1:8089:8080"]
+    depends_on: [db]
