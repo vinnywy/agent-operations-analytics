@@ -4,11 +4,13 @@ import re
 import shutil
 import subprocess
 import tempfile
+import tomllib
 import unittest
 from pathlib import Path
 from unittest.mock import patch
 
 from agentops.common import OpsError, atomic_write, no_secrets
+from agentops import __version__
 from agentops.releases import build_manifest, verify_manifest, verify_signature
 from agentops.evaluations import evaluate
 
@@ -19,6 +21,10 @@ spec.loader.exec_module(triage)
 
 
 class ContractTests(unittest.TestCase):
+    def test_package_and_runtime_versions_match(self):
+        with (ROOT / 'pyproject.toml').open('rb') as source:
+            self.assertEqual(tomllib.load(source)['project']['version'], __version__)
+
     def test_protocol_small(self):
         self.assertLessEqual((ROOT / 'AGENTS.md').stat().st_size, 6144)
 
