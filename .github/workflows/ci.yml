@@ -12,10 +12,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
-        with: {python-version: ${{ matrix.python }}}
+        with:
+          python-version: ${{ matrix.python }}
+      - run: python -m pip wheel --no-deps --wheel-dir dist .
       - run: python -m pip install .
       - run: python -m unittest discover -s tests -v
-      - run: python scripts/validate_public_snapshot.py
+      - run: git archive --format=zip --output=snapshot.zip HEAD
+      - run: python -c "import zipfile; zipfile.ZipFile('snapshot.zip').extractall('snapshot')"
+      - run: python snapshot/scripts/validate_public_snapshot.py
   memory-artifacts:
     runs-on: ubuntu-latest
     steps:
